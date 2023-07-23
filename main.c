@@ -1,13 +1,21 @@
-#include "main.h"
+#include <stdio.h>
+#include "main.h"      
 
 /**
+ * main - Entry point
  *
- *
+ * Return: Always 0
  */
-int main(void)
+int main()
 {
-	char *str = "Test";
+    int num = 123;
+    char character = 'A';
+    char string[] = "Hello, World!";
 
-	_puts(str);
-	return (1);
+    printf("Printing an integer: %d\n", num);
+    printf("Printing a character: %c\n", character);
+    printf("Printing a string: %s\n", string);
+
+    return 0;
 }
+

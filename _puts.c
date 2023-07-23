@@ -1,17 +1,21 @@
 #include "main.h"
-
 /**
- *
- *
- *
+ * _puts: print  character by character
+ * @buffer: input string to print
+ * @buff_ind: buffer inex to print
+ * Description: print the buffer basing on the index
+ * and the input string
+ * Return: nothing
  */
-void _puts(char *str)
+void _puts(char buffer[], int *buff_ind)
 {
-	int i;
-
-	for (i = 0; str[i] != '\0'; i++)
+	if (*buff_ind > 0)
 	{
-		_putchar(str[i]);
+		for (int i = 0; i < *buff_ind; i++)
+		{
+			_putchar(buffer[i]);
+		}
 	}
-	_putchar('\0');
+
+	*buff_ind = 0;
 }

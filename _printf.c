@@ -7,36 +7,42 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = specifier_count = printed =  0;
+	int i = 0;
+	int specifier_count = 0;
+	int printed =  0;
 	va_list list;
-	char va_arg1;
+	int va_arg1;
 	char *va_arg2;
 
 	while (format[i])
 	{
-		if (format[i] != '%') // no format specifier
+		if (format[i] != '%')
 		{
 			_putchar(format[i]);
+			i++;
 			printed++;
 		}
 		else if (format[i] == '%')
 		{
-			i++; // skip the % sign and parse what is next to it
-			specifier_count++; //counting the printed variable arguments
+			i++;
+			specifier_count++;
 
-			va_start(list, foramt)
+			va_start(list, format);
 			switch (format[i])
 			{
 				case 'c':
-					va_arg1 = va_arg(list, int)
+					va_arg1 = va_arg(list, int);
 					_putchar(va_arg1);
 					printed++;
 					break;
 				case 's':
-					va_arg2 = va_arg(list, char *)
+					va_arg2 = va_arg(list, char *);
 					_puts(va_arg2);
 					printed++;
 					break;
+				case '%':
+					_putchar(format[i]);
+					printed++;
 			}
 		}
 	}

@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- *
- *
- *
+ * _printf - prints anything
+ * @format: the string to be formatted
+ * Return: (printed) the numeber of printed characters
  */
 int _printf(const char *format, ...)
 {
@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 	va_list list;
 	int va_arg1;
 	char *va_arg2;
+	int va_arg3;
 
 	va_start(list, format);
 	while (format[i])
@@ -51,6 +52,13 @@ int _printf(const char *format, ...)
 				case '%':
 					_putchar(format[i]);
 					printed++;
+					break;
+				case 'i':
+				case 'd':
+					va_arg3 = va_arg(list, int);
+					_putint(va_arg3);
+					printed++;
+					break;
 			}
 			i++;
 		}

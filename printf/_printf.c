@@ -21,7 +21,6 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			_putchar(format[i]);
-			i++;
 			printed++;
 		
 		}
@@ -38,16 +37,8 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					va_arg2 = va_arg(list, char *);
-					if (va_arg2)
-					{
-						_puts(va_arg2);
-						printed++;
-					}
-					else
-					{
-						perror("Error, string printing");
-					
-					}
+					_puts(va_arg2);
+					printed++;
 					break;
 				case '%':
 					_putchar(format[i]);
@@ -60,8 +51,10 @@ int _printf(const char *format, ...)
 					printed++;
 					break;
 			}
-			i++;
 		}
+		i++;
 	}
+	va_end(list);
+
 	return (printed);
 }
